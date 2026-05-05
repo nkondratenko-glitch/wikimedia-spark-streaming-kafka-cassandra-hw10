@@ -1,0 +1,10 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements-generator.txt /app/requirements-generator.txt
+RUN pip install --no-cache-dir -r /app/requirements-generator.txt
+
+COPY src/generator/wikimedia_to_kafka.py /app/wikimedia_to_kafka.py
+
+CMD ["python", "/app/wikimedia_to_kafka.py"]
